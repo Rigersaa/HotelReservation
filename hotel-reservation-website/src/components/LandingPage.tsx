@@ -6,6 +6,7 @@ import EventIcon from '@mui/icons-material/Event';
 import PersonIcon from '@mui/icons-material/Person';
 import ChildCareIcon from '@mui/icons-material/ChildCare';
 import BedIcon from '@mui/icons-material/Bed';
+import { useSpring, animated } from 'react-spring';
 
 import '../styles/LandingPage.css';
 
@@ -21,6 +22,13 @@ const LandingPage: React.FC = () => {
 
     const navItems = ['Home', 'About Us', 'Our Rooms', 'Contact Us'];
 
+    // Slowed down animation for the hero section
+    const heroAnimation = useSpring({
+        from: { opacity: 0, transform: 'translateY(50px)' },
+        to: { opacity: 1, transform: 'translateY(0)' },
+        config: { tension: 100, friction: 30 }, // Slower movement
+    });
+
     return (
         <>
             {/* Navigation Bar */}
@@ -31,11 +39,11 @@ const LandingPage: React.FC = () => {
                     </Typography>
                     <Box sx={{ display: { xs: 'none', md: 'flex' }, gap: 2 }}>
                         {navItems.map((item) => (
-                            <Button key={item} color="inherit">
+                            <Button key={item} color="inherit" sx={{ transition: 'color 0.5s', '&:hover': { color: '#dba970' } }}>
                                 {item}
                             </Button>
                         ))}
-                        <Button variant="contained" sx={{ backgroundColor: '#dba970', color: 'white' }}>
+                        <Button variant="contained" sx={{ backgroundColor: '#dba970', color: 'white', transition: 'transform 0.5s', '&:hover': { transform: 'scale(1.05)' } }}>
                             Book Now
                         </Button>
                     </Box>
@@ -66,99 +74,101 @@ const LandingPage: React.FC = () => {
                             </ListItemButton>
                         ))}
                     </List>
-                    <Button variant="contained" sx={{ backgroundColor: '#dba970', color: 'white', width: '100%' }}>
+                    <Button variant="contained" sx={{ backgroundColor: '#dba970', color: 'white', width: '100%', transition: 'transform 0.5s', '&:hover': { transform: 'scale(1.05)' } }}>
                         Book Now
                     </Button>
                 </Box>
             </Drawer>
 
             {/* Hero Section */}
-            <Box className="hero-section">
-                <Typography variant="h2" sx={{ fontWeight: 'bold', paddingTop: '20vh', color: 'white', textAlign: 'center' }}>
-                    Enjoy A Luxury Experience
-                </Typography>
+            <animated.div style={heroAnimation}>
+                <Box className="hero-section">
+                    <Typography variant="h2" sx={{ fontWeight: 'bold', paddingTop: '20vh', color: 'white', textAlign: 'center' }}>
+                        Enjoy A Luxury Experience
+                    </Typography>
 
-                {/* Booking Form Box */}
-                <Container maxWidth="lg">
-                    <Box className="booking-container" sx={{ backgroundColor: 'white', borderRadius: '10px', p: 3, mt: 5, boxShadow: '0 4px 20px rgba(0, 0, 0, 0.1)' }}>
-                        <Box className="booking-form" sx={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap' }}>
-                            <TextField
-                                label="Check-in Date"
-                                type="date"
-                                InputLabelProps={{ shrink: true }}
-                                variant="outlined"
-                                sx={{ width: { xs: '100%', md: '18%' }, mb: { xs: 2, md: 0 } }}
-                                InputProps={{
-                                    startAdornment: (
-                                        <InputAdornment position="start">
-                                            <EventIcon />
-                                        </InputAdornment>
-                                    ),
-                                }}
-                            />
-                            <TextField
-                                label="Check-out Date"
-                                type="date"
-                                InputLabelProps={{ shrink: true }}
-                                variant="outlined"
-                                sx={{ width: { xs: '100%', md: '18%' }, mb: { xs: 2, md: 0 } }}
-                                InputProps={{
-                                    startAdornment: (
-                                        <InputAdornment position="start">
-                                            <EventIcon />
-                                        </InputAdornment>
-                                    ),
-                                }}
-                            />
-                            <TextField
-                                label="Adults"
-                                type="number"
-                                variant="outlined"
-                                sx={{ width: { xs: '100%', md: '12%' }, mb: { xs: 2, md: 0 } }}
-                                InputProps={{
-                                    startAdornment: (
-                                        <InputAdornment position="start">
-                                            <PersonIcon />
-                                        </InputAdornment>
-                                    ),
-                                }}
-                            />
-                            <TextField
-                                label="Child"
-                                type="number"
-                                variant="outlined"
-                                sx={{ width: { xs: '100%', md: '12%' }, mb: { xs: 2, md: 0 } }}
-                                InputProps={{
-                                    startAdornment: (
-                                        <InputAdornment position="start">
-                                            <ChildCareIcon />
-                                        </InputAdornment>
-                                    ),
-                                }}
-                            />
-                            <TextField
-                                label="Rooms"
-                                type="number"
-                                variant="outlined"
-                                sx={{ width: { xs: '100%', md: '12%' }, mb: { xs: 2, md: 0 } }}
-                                InputProps={{
-                                    startAdornment: (
-                                        <InputAdornment position="start">
-                                            <BedIcon />
-                                        </InputAdornment>
-                                    ),
-                                }}
-                            />
-                            <Button 
-                                variant="contained" 
-                                sx={{ backgroundColor: '#dba970', color: 'white', height: '56px', alignSelf: 'center', mt: { xs: 2, md: 0 }, width: { xs: '100%', md: 'auto' } }}
-                            >
-                                Check Availability
-                            </Button>
+                    {/* Booking Form Box */}
+                    <Container maxWidth="lg">
+                        <Box className="booking-container" sx={{ backgroundColor: 'white', borderRadius: '10px', p: 3, mt: 5, boxShadow: '0 4px 20px rgba(0, 0, 0, 0.1)' }}>
+                            <Box className="booking-form" sx={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap' }}>
+                                <TextField
+                                    label="Check-in Date"
+                                    type="date"
+                                    InputLabelProps={{ shrink: true }}
+                                    variant="outlined"
+                                    sx={{ width: { xs: '100%', md: '18%' }, mb: { xs: 2, md: 0 }, transition: 'all 0.5s', '&:hover': { boxShadow: '0 0 5px rgba(0,0,0,0.5)' } }}
+                                    InputProps={{
+                                        startAdornment: (
+                                            <InputAdornment position="start">
+                                                <EventIcon />
+                                            </InputAdornment>
+                                        ),
+                                    }}
+                                />
+                                <TextField
+                                    label="Check-out Date"
+                                    type="date"
+                                    InputLabelProps={{ shrink: true }}
+                                    variant="outlined"
+                                    sx={{ width: { xs: '100%', md: '18%' }, mb: { xs: 2, md: 0 }, transition: 'all 0.5s', '&:hover': { boxShadow: '0 0 5px rgba(0,0,0,0.5)' } }}
+                                    InputProps={{
+                                        startAdornment: (
+                                            <InputAdornment position="start">
+                                                <EventIcon />
+                                            </InputAdornment>
+                                        ),
+                                    }}
+                                />
+                                <TextField
+                                    label="Adults"
+                                    type="number"
+                                    variant="outlined"
+                                    sx={{ width: { xs: '100%', md: '12%' }, mb: { xs: 2, md: 0 }, transition: 'all 0.5s', '&:hover': { boxShadow: '0 0 5px rgba(0,0,0,0.5)' } }}
+                                    InputProps={{
+                                        startAdornment: (
+                                            <InputAdornment position="start">
+                                                <PersonIcon />
+                                            </InputAdornment>
+                                        ),
+                                    }}
+                                />
+                                <TextField
+                                    label="Child"
+                                    type="number"
+                                    variant="outlined"
+                                    sx={{ width: { xs: '100%', md: '12%' }, mb: { xs: 2, md: 0 }, transition: 'all 0.5s', '&:hover': { boxShadow: '0 0 5px rgba(0,0,0,0.5)' } }}
+                                    InputProps={{
+                                        startAdornment: (
+                                            <InputAdornment position="start">
+                                                <ChildCareIcon />
+                                            </InputAdornment>
+                                        ),
+                                    }}
+                                />
+                                <TextField
+                                    label="Rooms"
+                                    type="number"
+                                    variant="outlined"
+                                    sx={{ width: { xs: '100%', md: '12%' }, mb: { xs: 2, md: 0 }, transition: 'all 0.5s', '&:hover': { boxShadow: '0 0 5px rgba(0,0,0,0.5)' } }}
+                                    InputProps={{
+                                        startAdornment: (
+                                            <InputAdornment position="start">
+                                                <BedIcon />
+                                            </InputAdornment>
+                                        ),
+                                    }}
+                                />
+                                <Button 
+                                    variant="contained" 
+                                    sx={{ backgroundColor: '#dba970', color: 'white', height: '56px', alignSelf: 'center', mt: { xs: 2, md: 0 }, width: { xs: '100%', md: 'auto' }, transition: 'transform 0.5s', '&:hover': { transform: 'scale(1.05)' } }}
+                                >
+                                    Check Availability
+                                </Button>
+                            </Box>
                         </Box>
-                    </Box>
-                </Container>
-            </Box>
+                    </Container>
+                </Box>
+            </animated.div>
         </>
     );
 };
