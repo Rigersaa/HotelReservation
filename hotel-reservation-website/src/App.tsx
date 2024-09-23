@@ -4,6 +4,7 @@ import LandingPage from './components/LandingPage' // Import the Hero component
 import AboutUs from './components/AboutUs';
 import OurServices from './components/OurServices';
 import VideoSection from './components/videosection';
+import { Room } from '@mui/icons-material';
 
 
 
@@ -16,6 +17,7 @@ const App: React.FC = () => {
        <AboutUs/>
        <OurServices/>
        <VideoSection/>
+       <Room/>
         </>} />
       </Routes>
     </Router>
