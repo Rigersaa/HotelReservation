@@ -1,11 +1,11 @@
-html {
-    scroll-behavior: smooth;
-}
-body {
+html, body {
+    overflow-x: hidden;
     margin: 0;
-    font-family: Arial, sans-serif;
+    padding: 0;
+    width: 100%;
 }
 
-.container {
-    padding: 20px;
+/* Optional: Ensure no elements overflow horizontally */
+* {
+    box-sizing: border-box;
 }

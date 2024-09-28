@@ -22,11 +22,11 @@ const LandingPage: React.FC = () => {
 
     const navItems = ['Home', 'About Us', 'Our Rooms', 'Contact Us'];
 
-    // Slowed down animation for the hero section
+    // Animation for the hero section
     const heroAnimation = useSpring({
         from: { opacity: 0, transform: 'translateY(50px)' },
         to: { opacity: 1, transform: 'translateY(0)' },
-        config: { tension: 100, friction: 30 }, // Slower movement
+        config: { tension: 200, friction: 15 },
     });
 
     return (
@@ -39,11 +39,11 @@ const LandingPage: React.FC = () => {
                     </Typography>
                     <Box sx={{ display: { xs: 'none', md: 'flex' }, gap: 2 }}>
                         {navItems.map((item) => (
-                            <Button key={item} color="inherit" sx={{ transition: 'color 0.5s', '&:hover': { color: '#dba970' } }}>
+                            <Button key={item} color="inherit" sx={{ transition: 'color 0.3s', '&:hover': { color: '#dba970' } }}>
                                 {item}
                             </Button>
                         ))}
-                        <Button variant="contained" sx={{ backgroundColor: '#dba970', color: 'white', transition: 'transform 0.5s', '&:hover': { transform: 'scale(1.05)' } }}>
+                        <Button variant="contained" sx={{ backgroundColor: '#dba970', color: 'white', transition: 'transform 0.3s', '&:hover': { transform: 'scale(1.05)' } }}>
                             Book Now
                         </Button>
                     </Box>
@@ -74,7 +74,7 @@ const LandingPage: React.FC = () => {
                             </ListItemButton>
                         ))}
                     </List>
-                    <Button variant="contained" sx={{ backgroundColor: '#dba970', color: 'white', width: '100%', transition: 'transform 0.5s', '&:hover': { transform: 'scale(1.05)' } }}>
+                    <Button variant="contained" sx={{ backgroundColor: '#dba970', color: 'white', width: '100%', transition: 'transform 0.3s', '&:hover': { transform: 'scale(1.05)' } }}>
                         Book Now
                     </Button>
                 </Box>
@@ -96,7 +96,7 @@ const LandingPage: React.FC = () => {
                                     type="date"
                                     InputLabelProps={{ shrink: true }}
                                     variant="outlined"
-                                    sx={{ width: { xs: '100%', md: '18%' }, mb: { xs: 2, md: 0 }, transition: 'all 0.5s', '&:hover': { boxShadow: '0 0 5px rgba(0,0,0,0.5)' } }}
+                                    sx={{ width: { xs: '100%', md: '18%' }, mb: { xs: 2, md: 0 }, transition: 'all 0.3s', '&:hover': { boxShadow: '0 0 5px rgba(0,0,0,0.5)' } }}
                                     InputProps={{
                                         startAdornment: (
                                             <InputAdornment position="start">
@@ -110,7 +110,7 @@ const LandingPage: React.FC = () => {
                                     type="date"
                                     InputLabelProps={{ shrink: true }}
                                     variant="outlined"
-                                    sx={{ width: { xs: '100%', md: '18%' }, mb: { xs: 2, md: 0 }, transition: 'all 0.5s', '&:hover': { boxShadow: '0 0 5px rgba(0,0,0,0.5)' } }}
+                                    sx={{ width: { xs: '100%', md: '18%' }, mb: { xs: 2, md: 0 }, transition: 'all 0.3s', '&:hover': { boxShadow: '0 0 5px rgba(0,0,0,0.5)' } }}
                                     InputProps={{
                                         startAdornment: (
                                             <InputAdornment position="start">
@@ -123,7 +123,7 @@ const LandingPage: React.FC = () => {
                                     label="Adults"
                                     type="number"
                                     variant="outlined"
-                                    sx={{ width: { xs: '100%', md: '12%' }, mb: { xs: 2, md: 0 }, transition: 'all 0.5s', '&:hover': { boxShadow: '0 0 5px rgba(0,0,0,0.5)' } }}
+                                    sx={{ width: { xs: '100%', md: '12%' }, mb: { xs: 2, md: 0 }, transition: 'all 0.3s', '&:hover': { boxShadow: '0 0 5px rgba(0,0,0,0.5)' } }}
                                     InputProps={{
                                         startAdornment: (
                                             <InputAdornment position="start">
@@ -136,7 +136,7 @@ const LandingPage: React.FC = () => {
                                     label="Child"
                                     type="number"
                                     variant="outlined"
-                                    sx={{ width: { xs: '100%', md: '12%' }, mb: { xs: 2, md: 0 }, transition: 'all 0.5s', '&:hover': { boxShadow: '0 0 5px rgba(0,0,0,0.5)' } }}
+                                    sx={{ width: { xs: '100%', md: '12%' }, mb: { xs: 2, md: 0 }, transition: 'all 0.3s', '&:hover': { boxShadow: '0 0 5px rgba(0,0,0,0.5)' } }}
                                     InputProps={{
                                         startAdornment: (
                                             <InputAdornment position="start">
@@ -149,7 +149,7 @@ const LandingPage: React.FC = () => {
                                     label="Rooms"
                                     type="number"
                                     variant="outlined"
-                                    sx={{ width: { xs: '100%', md: '12%' }, mb: { xs: 2, md: 0 }, transition: 'all 0.5s', '&:hover': { boxShadow: '0 0 5px rgba(0,0,0,0.5)' } }}
+                                    sx={{ width: { xs: '100%', md: '12%' }, mb: { xs: 2, md: 0 }, transition: 'all 0.3s', '&:hover': { boxShadow: '0 0 5px rgba(0,0,0,0.5)' } }}
                                     InputProps={{
                                         startAdornment: (
                                             <InputAdornment position="start">
@@ -160,7 +160,7 @@ const LandingPage: React.FC = () => {
                                 />
                                 <Button 
                                     variant="contained" 
-                                    sx={{ backgroundColor: '#dba970', color: 'white', height: '56px', alignSelf: 'center', mt: { xs: 2, md: 0 }, width: { xs: '100%', md: 'auto' }, transition: 'transform 0.5s', '&:hover': { transform: 'scale(1.05)' } }}
+                                    sx={{ backgroundColor: '#dba970', color: 'white', height: '56px', alignSelf: 'center', mt: { xs: 2, md: 0 }, width: { xs: '100%', md: 'auto' }, transition: 'transform 0.3s', '&:hover': { transform: 'scale(1.05)' } }}
                                 >
                                     Check Availability
                                 </Button>
